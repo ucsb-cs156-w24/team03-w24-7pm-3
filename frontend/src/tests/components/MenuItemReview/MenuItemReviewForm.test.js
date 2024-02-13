@@ -92,7 +92,9 @@ describe("MenuItemReviewForm tests", () => {
         expect(screen.getByText(/Date Reviewed is required./)).toBeInTheDocument();
         expect(screen.getByText(/Comments are required./)).toBeInTheDocument();
 
-        fireEvent.change(stars, { target: { value: "10" } });
+        const starsField = screen.getByTestId("MenuItemReviewForm-stars");
+
+        fireEvent.change(starsField, { target: { value: "10" } });
         fireEvent.click(submitButton);
 
         await waitFor(() => {
