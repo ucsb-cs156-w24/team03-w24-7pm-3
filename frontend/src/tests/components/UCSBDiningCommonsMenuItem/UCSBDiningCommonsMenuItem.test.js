@@ -84,7 +84,8 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         );
 
         expect(await screen.findByText(/Create/)).toBeInTheDocument();
-        const submitButton = screen.getByText(/Create/);
+        // const submitButton = screen.getByText(/Create/);
+        const submitButton = screen.getByTestId(`${testId}-submit`);
         fireEvent.click(submitButton);
 
         await screen.findByText(/Dining Commons Code is required./);
@@ -96,13 +97,30 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         await screen.findByText(/Station is required/);
         expect(screen.getByText(/Station is required/)).toBeInTheDocument();
 
+        const diningCommonsCodeInput = screen.getByTestId(`${testId}-diningCommonsCode`);
+        fireEvent.change(diningCommonsCodeInput, { target: { value: "a".repeat(31) } });
+        fireEvent.click(submitButton);
+        await screen.findByText(/Max length 30 characters/);
+        expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+
+
         const nameInput = screen.getByTestId(`${testId}-name`);
         fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });
+        fireEvent.change(diningCommonsCodeInput, { target: { value: "" } });
         fireEvent.click(submitButton);
 
-        await waitFor(() => {
-            expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
-        });
+        await screen.findByText(/Max length 30 characters/);
+        expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+
+
+        const stationInput = screen.getByTestId(`${testId}-station`);
+        fireEvent.change(stationInput, { target: { value: "a".repeat(31) } });
+        fireEvent.change(nameInput, { target: { value: "" } });
+        fireEvent.click(submitButton);
+
+        await screen.findByText(/Max length 30 characters/);
+        expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+
     });
 
 });
