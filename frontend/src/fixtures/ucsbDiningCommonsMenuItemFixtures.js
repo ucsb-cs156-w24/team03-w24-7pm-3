@@ -24,7 +24,7 @@ const ucsbDiningCommonsMenuItemFixtures = {
                 "station": "Egg Station"
             },
             {
-                "id": 1,
+                "id": 4,
                 "diningCommonsCode": "DLG",
                 "name": "Taco",
                 "station": "Taco Bar"
