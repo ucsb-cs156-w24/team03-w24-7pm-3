@@ -44,11 +44,11 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     type="text"
                     isInvalid={Boolean(errors.itemId)}
                     {...register("itemId", {
-                        required: true
+                        required: "Item Id is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.itemId && 'Item Id is required.'}
+                    {errors.itemId?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
@@ -60,11 +60,11 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     type="text"
                     isInvalid={Boolean(errors.reviewerEmail)}
                     {...register("reviewerEmail", {
-                        required: true
+                        required: "Email is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.itemId && 'Email is required.'}
+                    {errors.reviewerEmail?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
@@ -81,7 +81,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.stars?.type === 'required' && 'Stars are required.'}
+                    {errors.stars && 'Stars are required.'}
                     {errors.stars?.type === 'max' && 'Max rating of 5 stars'}
                 </Form.Control.Feedback>
             </Form.Group>
@@ -96,7 +96,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     {...register("dateReviewed", { required: true, pattern: isodate_regex })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.dateReviewed && 'Date Reviewed is required. '}
+                    {errors.dateReviewed && 'Date Reviewed is required.'}
                 </Form.Control.Feedback>
             </Form.Group>
 
@@ -108,11 +108,11 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     type="text"
                     isInvalid={Boolean(errors.comments)}
                     {...register("comments", {
-                        required: true
+                        required: "Comments are required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.itemId && 'Comments are required.'}
+                    {errors.comments?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
