@@ -34,31 +34,33 @@ jest.mock('react-router-dom', () => {
 
 describe("UCSBDiningCommonsMenuItemEditPage tests", () => {
 
-    const axiosMock = new AxiosMockAdapter(axios);
+    describe("when the backend doesn't return data", () => {
+        const axiosMock = new AxiosMockAdapter(axios);
 
-    const setupUserOnly = () => {
-        axiosMock.reset();
-        axiosMock.resetHistory();
-        axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
-        axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-    };
+        beforeEach(() => {
+            axiosMock.reset();
+            axiosMock.resetHistory();
+            axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
+            axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
+        });
 
-    const queryClient = new QueryClient();
+        const queryClient = new QueryClient();
 
-    test("renders header but table is not present", async () => {
+        test("renders header but table is not present", async () => {
 
-        const restoreConsole = mockConsole();
+            const restoreConsole = mockConsole();
 
-        render(
-            <QueryClientProvider client={queryClient}>
-                <MemoryRouter>
-                    <UCSBDiningCommonsMenuItemEditPage />
-                </MemoryRouter>
-            </QueryClientProvider>
-        );
-        await screen.findByText("Edit Dining Commons Menu Item");
-        expect(screen.queryByTestId("UCSBDiningCommonsMenuItem-name")).not.toBeInTheDocument();
-        restoreConsole();
+            render(
+                <QueryClientProvider client={queryClient}>
+                    <MemoryRouter>
+                        <UCSBDiningCommonsMenuItemEditPage />
+                    </MemoryRouter>
+                </QueryClientProvider>
+            );
+            await screen.findByText("Edit Dining Commons Menu Item");
+            expect(screen.queryByTestId("UCSBDiningCommonsMenuItem-name")).not.toBeInTheDocument();
+            restoreConsole();
+        });
     });
 
     describe("tests where backend is working normally", () => {
