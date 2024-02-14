@@ -8,8 +8,8 @@ TODO: Add a link to the deployed Dokku app for your team here, e.g.
 
 Deployments:
 
-* Prod: <https://team03.dokku-17.cs.ucsb.edu>
-* QA: <https://team03-qa.dokku-17.cs.ucsb.edu>
+* Prod: <https://team03.dokku-15.cs.ucsb.edu>
+* QA: <https://team03-qa.dokku-15.cs.ucsb.edu>
 
 TODO: Fill in this table with correct information. 
 
