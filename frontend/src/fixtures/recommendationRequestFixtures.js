@@ -44,4 +44,6 @@ const recommendationRequestFixtures = {
             "done" : "false"      
         },
     ]
-}
+};
+
+export {recommendationRequestFixtures}
