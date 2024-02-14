@@ -29,7 +29,7 @@ const menuItemReviewFixtures = {
             "itemId": "3",
             "reviewerEmail": "testemail@ucsb.edu",
             "stars": "3",
-            "localDateTime": "2022-07-04T12:00:00",
+            "dateReviewed": "2022-07-04T12:00:00",
             "comments": "Barely Passable"
         }
     ]
