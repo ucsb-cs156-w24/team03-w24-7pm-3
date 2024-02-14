@@ -90,6 +90,9 @@ describe("MenuItemReviewIndexPage tests", () => {
         // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
         expect(screen.queryByTestId("MenuItemReviewTable-cell-row-0-col-Delete-button")).not.toBeInTheDocument();
         expect(screen.queryByTestId("MenuItemReviewTable-cell-row-0-col-Edit-button")).not.toBeInTheDocument();
+
+        // assert that the Create button is not present when user isn't an admin
+        expect(screen.queryByText(/Create UCSBDate/)).not.toBeInTheDocument();
     });
 
     test("renders empty table when backend unavailable, user only", async () => {
