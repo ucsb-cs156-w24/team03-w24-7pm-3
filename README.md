@@ -1,4 +1,4 @@
-# STARTER-team03
+# team03-w24-7pm-3
 
 Instructions: <https://ucsb-cs156.github.io/f23/lab/team03.html>
 
@@ -19,7 +19,7 @@ TODO: Fill in this table with correct information.
 | UCSBOrganization          |              |           |
 | RecommendationRequest     |              |           |
 | MenuItemReview            |              |           |
-| HelpRequest               |              |           |
+| HelpRequest               |        Joseph Li       |   josephlicodes        |
 | Articles                  |              |           |
 
 Remember though, that in spite of these initial  assignments, it is still
