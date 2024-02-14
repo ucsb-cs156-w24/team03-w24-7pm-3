@@ -147,7 +147,7 @@ describe("MenuItemReviewTable tests", () => {
         );
     
         // assert - check that the expected content is rendered
-        expect(await screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+        expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
         expect(screen.getByTestId(`${testId}-cell-row-0-col-itemId`)).toHaveTextContent("1");
         expect(screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`)).toHaveTextContent("cgaucho@ucsb.edu");
 
@@ -178,7 +178,7 @@ describe("MenuItemReviewTable tests", () => {
         );
     
         // assert - check that the expected content is rendered
-        expect(await screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+        expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
         expect(screen.getByTestId(`${testId}-cell-row-0-col-itemId`)).toHaveTextContent("1");
         expect(screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`)).toHaveTextContent("cgaucho@ucsb.edu");
         expect(screen.getByTestId(`${testId}-cell-row-0-col-stars`)).toHaveTextContent("5");
