@@ -17,7 +17,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
    
     const navigate = useNavigate();
 
-    const testIdPrefix = "ArticlesForm";
+    // const testIdPrefix = "ArticlesForm";
 
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
@@ -28,7 +28,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                 <Form.Group className="mb-3" >
                     <Form.Label htmlFor="id">Id</Form.Label>
                     <Form.Control
-                        data-testid={testIdPrefix + "-id"}
+                        data-testid={"ArticlesForm-id"}
                         id="id"
                         type="text"
                         {...register("id")}
@@ -41,7 +41,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="title">Title</Form.Label>
                 <Form.Control
-                    data-testid={testIdPrefix + "-title"}
+                    data-testid={"ArticlesForm-title"}
                     id="title"
                     type="text"
                     isInvalid={Boolean(errors.title)}
@@ -61,7 +61,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="url">Url</Form.Label>
                 <Form.Control
-                    data-testid={testIdPrefix + "-url"}
+                    data-testid={"ArticlesForm-url"}
                     id="url"
                     type="text"
                     isInvalid={Boolean(errors.url)}
@@ -77,7 +77,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="explanation">Explanation</Form.Label>
                 <Form.Control
-                    data-testid={testIdPrefix + "-explanation"}
+                    data-testid={"ArticlesForm-explanation"}
                     id="explanation"
                     type="text"
                     isInvalid={Boolean(errors.explanation)}
@@ -93,7 +93,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="email">Email</Form.Label>
                 <Form.Control
-                    data-testid={testIdPrefix + "-email"}
+                    data-testid={"ArticlesForm-email"}
                     id="email"
                     type="text"
                     isInvalid={Boolean(errors.email)}
@@ -109,7 +109,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             <Form.Group className="mb-3" >
                         <Form.Label htmlFor="dateAdded">Date Added</Form.Label>
                         <Form.Control
-                            data-testid={testIdPrefix + "-dateAdded"}
+                            data-testid={"ArticlesForm-dateAdded"}
                             id="dateAdded"
                             type="datetime-local"
                             isInvalid={Boolean(errors.dateAdded)}
@@ -122,14 +122,14 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             
             <Button
                 type="submit"
-                data-testid={testIdPrefix + "-submit"}
+                data-testid={"ArticlesForm-submit"}
             >
                 {buttonLabel}
             </Button>
             <Button
                 variant="Secondary"
                 onClick={() => navigate(-1)}
-                data-testid={testIdPrefix + "-cancel"}
+                data-testid={"ArticlesForm-cancel"}
             >
                 Cancel
             </Button>
