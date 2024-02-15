@@ -100,6 +100,21 @@ describe("MenuItemReviewForm tests", () => {
         await waitFor(() => {
             expect(screen.getByText(/Max rating of 5 stars/)).toBeInTheDocument();
         });
+
+        fireEvent.change(starsField, { target: { value: "-10" } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => {
+            expect(screen.getByText(/Min rating of 1 stars/)).toBeInTheDocument();
+        });
+
+        const reviewerEmailField = screen.getByTestId("MenuItemReviewForm-reviewerEmail");
+        fireEvent.change(reviewerEmailField, { target: { value: "cgauchoucsb.edu" } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => {
+            expect(screen.getByText(/@ is required in an email/)).toBeInTheDocument();
+        });
     });
 
     test("No Error messsages on good input", async () => {
