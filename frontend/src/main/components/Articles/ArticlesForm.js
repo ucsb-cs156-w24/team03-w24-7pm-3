@@ -59,7 +59,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="url">Description</Form.Label>
+                <Form.Label htmlFor="url">Url</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-url"}
                     id="url"
@@ -75,7 +75,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="explanation">Description</Form.Label>
+                <Form.Label htmlFor="explanation">Explanation</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-explanation"}
                     id="explanation"
@@ -91,7 +91,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             </Form.Group>
             
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="email">Description</Form.Label>
+                <Form.Label htmlFor="email">Email</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-email"}
                     id="email"
