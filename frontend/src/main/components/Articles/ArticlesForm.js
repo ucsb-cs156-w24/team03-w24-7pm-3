@@ -39,13 +39,13 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
             )}
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="title">Name</Form.Label>
+                <Form.Label htmlFor="title">Title</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-title"}
-                    id="name"
+                    id="title"
                     type="text"
-                    isInvalid={Boolean(errors.name)}
-                    {...register("name", {
+                    isInvalid={Boolean(errors.title)}
+                    {...register("title", {
                         required: "Title is required.",
                         maxLength : {
                             value: 30,
@@ -54,7 +54,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.name?.message}
+                    {errors.title?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
@@ -64,13 +64,13 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     data-testid={testIdPrefix + "-url"}
                     id="url"
                     type="text"
-                    isInvalid={Boolean(errors.description)}
+                    isInvalid={Boolean(errors.url)}
                     {...register("url", {
                         required: "Url is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.description?.message}
+                    {errors.url?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
@@ -80,13 +80,13 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     data-testid={testIdPrefix + "-explanation"}
                     id="explanation"
                     type="text"
-                    isInvalid={Boolean(errors.description)}
+                    isInvalid={Boolean(errors.explanation)}
                     {...register("explanation", {
                         required: "Explanation is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.description?.message}
+                    {errors.explanation?.message}
                 </Form.Control.Feedback>
             </Form.Group>
             
@@ -96,27 +96,27 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     data-testid={testIdPrefix + "-email"}
                     id="email"
                     type="text"
-                    isInvalid={Boolean(errors.description)}
+                    isInvalid={Boolean(errors.email)}
                     {...register("email", {
                         required: "Email is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.description?.message}
+                    {errors.email?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="dateAdded">Date (iso format)</Form.Label>
+                        <Form.Label htmlFor="dateAdded">Date Added</Form.Label>
                         <Form.Control
                             data-testid={testIdPrefix + "-dateAdded"}
                             id="dateAdded"
                             type="datetime-local"
-                            isInvalid={Boolean(errors.localDateTime)}
+                            isInvalid={Boolean(errors.dateAdded)}
                             {...register("dateAdded", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.localDateTime && 'DateAdded is required. '}
+                            {errors.dateAdded && 'DateAdded is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
             

@@ -16,7 +16,7 @@ jest.mock('react-router-dom', () => ({
 describe("ArticlesForm tests", () => {
     const queryClient = new QueryClient();
 
-    const expectedHeaders = ["Title", "Url", "Explanation", "Email", "DateAdded"];
+    const expectedHeaders = ["Title", "Url", "Explanation", "Email", "Date Added"];
     const testId = "ArticlesForm";
 
     test("renders correctly with no initialContents", async () => {
@@ -87,11 +87,14 @@ describe("ArticlesForm tests", () => {
         const submitButton = screen.getByText(/Create/);
         fireEvent.click(submitButton);
 
-        await screen.findByText(/Name is required/);
-        expect(screen.getByText(/Description is required/)).toBeInTheDocument();
+        await screen.findByText(/Title is required/);
+        expect(screen.getByText(/Url is required/)).toBeInTheDocument();
+        expect(screen.getByText(/Explanation is required/)).toBeInTheDocument();
+        expect(screen.getByText(/Email is required/)).toBeInTheDocument();
+        expect(screen.getByText(/DateAdded is required/)).toBeInTheDocument();
 
-        const nameInput = screen.getByTestId(`${testId}-name`);
-        fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });
+        const titleInput = screen.getByTestId(`${testId}-title`);
+        fireEvent.change(titleInput, { target: { value: "a".repeat(31) } });
         fireEvent.click(submitButton);
 
         await waitFor(() => {
