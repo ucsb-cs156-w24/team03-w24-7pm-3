@@ -102,4 +102,38 @@ describe("ArticlesForm tests", () => {
         });
     });
 
+
+    test("No Error messsages on good input", async () => {
+
+        const mockSubmitAction = jest.fn();
+
+
+        render(
+            <Router  >
+                <ArticlesForm submitAction={mockSubmitAction} />
+            </Router>
+        );
+        await screen.findByTestId(`${testId}-title`);
+
+        const titleField = screen.getByTestId(`${testId}-title`);
+        const urlField = screen.getByTestId(`${testId}-url`);
+        const explanationField = screen.getByTestId(`${testId}-explanation`);
+        const emailField = screen.getByTestId(`${testId}-email`);
+        const dateAddedField = screen.getByTestId(`${testId}-dateAdded`);
+        const submitButton = screen.getByTestId(`${testId}-submit`);
+
+        fireEvent.change(titleField, { target: { value: 'title' } });
+        fireEvent.change(urlField, { target: { value: 'http://articles.com' } });
+        fireEvent.change(explanationField, { target: { value: 'explanation1' } });
+        fireEvent.change(emailField, { target: { value: 'email1' } });
+        fireEvent.change(dateAddedField, { target: { value: '2022-10-02T12:00' } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
+
+        expect(screen.queryByText(/Max length 30 characters/)).not.toBeInTheDocument();
+
+    });
+
+
 });
