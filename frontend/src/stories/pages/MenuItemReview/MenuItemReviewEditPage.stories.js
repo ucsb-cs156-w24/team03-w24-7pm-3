@@ -11,7 +11,7 @@ export default {
     component: MenuItemReviewEditPage
 };
 
-const Template = () => <RestaurantEditPage storybook={true}/>;
+const Template = () => <MenuItemReviewEditPage storybook={true}/>;
 
 export const Default = Template.bind({});
 Default.parameters = {
