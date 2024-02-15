@@ -106,8 +106,8 @@ describe("MenuItemReviewForm tests", () => {
 
         await waitFor(() => {
             expect(screen.getByText(/Min rating of 1 stars/)).toBeInTheDocument();
-            expect(screen.queryByText(/Stars are required./)).not.toBeInTheDocument();
         });
+        expect(screen.queryByText(/Stars are required./)).not.toBeInTheDocument();
 
         const reviewerEmailField = screen.getByTestId("MenuItemReviewForm-reviewerEmail");
         fireEvent.change(reviewerEmailField, { target: { value: "cgauchoucsb.edu" } });
@@ -115,8 +115,8 @@ describe("MenuItemReviewForm tests", () => {
 
         await waitFor(() => {
             expect(screen.getByText(/@ is required in an email/)).toBeInTheDocument();
-            expect(screen.queryByText(/Email is required./)).not.toBeInTheDocument();
         });
+        expect(screen.queryByText(/Email is required./)).not.toBeInTheDocument();
     });
 
     test("No Error messsages on good input", async () => {
