@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "UCSBOrganizations")
 @RequestMapping("/api/ucsborganizations")
-@RestController
+@RestController 
 @Slf4j
 public class UCSBOrganizationsController extends ApiController {
     @Autowired
