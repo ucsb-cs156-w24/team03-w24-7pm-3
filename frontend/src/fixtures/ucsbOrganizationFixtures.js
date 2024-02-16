@@ -1,11 +1,11 @@
-const ucsbOrganizationsFixtures = {
-    oneDate: {
+const ucsbOrganizationFixtures = {
+    oneOrg: {
         "orgCode": "1234",
         "orgTranslationShort": "LI",
         "orgTranslation": "Los Ingenieros",
         "inactive": "true"
     },
-    threeDates: [
+    threeOrgs: [
         {
             "orgCode": "5678",
             "orgTranslationShort": "HAU",
@@ -28,4 +28,4 @@ const ucsbOrganizationsFixtures = {
 };
 
 
-export { ucsbOrganizationsFixtures };
+export { ucsbOrganizationFixtures };

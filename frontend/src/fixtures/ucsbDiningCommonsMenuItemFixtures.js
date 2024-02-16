@@ -9,7 +9,7 @@ const ucsbDiningCommonsMenuItemFixtures = {
             }
         ],
 
-    threeRestaurants:
+    threeRestaurants: 
         [
             {
                 "id": 2,
