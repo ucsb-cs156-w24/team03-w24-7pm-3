@@ -100,8 +100,8 @@ describe("UCSBOrganizationForm tests", () => {
         expect(screen.getByText(/Organization status is required./)).toBeInTheDocument();
 
 
-        const acronymInput = screen.getByTestId(`${testId}-orgTranslationShort`);
-        fireEvent.click(submitButton);
+        //const acronymInput = screen.getByTestId(`${testId}-orgTranslationShort`);
+        //fireEvent.click(submitButton);
 
         const orgNameInput = screen.getByTestId(`${testId}-orgTranslation`);
         fireEvent.change(orgNameInput, { target: { value: "a".repeat(31) } });
@@ -116,7 +116,7 @@ describe("UCSBOrganizationForm tests", () => {
         await screen.findByText(/Max length 30 characters/);
         //expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
 
-        const errorMessages = await screen.getAllByText(/Max length 30 characters/);
+        const errorMessages = screen.getAllByText(/Max length 30 characters/);
         expect(errorMessages.length).toBe(2); expect(errorMessages.length).toBe(2); 
 
         
@@ -136,7 +136,7 @@ describe("UCSBOrganizationForm tests", () => {
         //const submitButton = screen.getByText(/Create/);
         const submitButton = screen.getByTestId(`${testId}-submit`);
         fireEvent.click(submitButton);
-        
+
         // Simulate input that exceeds the maximum length
         const acronymInput = screen.getByTestId(`${testId}-orgTranslationShort`);
         fireEvent.change(acronymInput, { target: { value: "a".repeat(31) } });
