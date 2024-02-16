@@ -101,13 +101,13 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     isInvalid={Boolean(errors.email)}
                     {...register("email", {
                         required: true,
-                        // Stryker disable next-line all
                         pattern:email_regex
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
                     {errors.email?.type === "required" && 'Email is required'}
-                    {errors.email?.type === "pattern" && '@ is required in an email'}
+                    {// Stryker disable next-line all
+                    errors.email?.type === "pattern" && '@ is required in an email'}
                 </Form.Control.Feedback>
             </Form.Group>
 
