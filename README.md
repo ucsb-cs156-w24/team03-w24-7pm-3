@@ -2,10 +2,6 @@
 
 Instructions: <https://ucsb-cs156.github.io/f23/lab/team03.html>
 
-TODO: change heading above to your repo name, e.g. `# team03-f23-9am-4`
-
-TODO: Add a link to the deployed Dokku app for your team here, e.g.
-
 Deployments:
 
 * Prod: <https://team03.dokku-15.cs.ucsb.edu>
