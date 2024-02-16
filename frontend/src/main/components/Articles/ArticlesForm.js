@@ -100,8 +100,8 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     type="text"
                     isInvalid={Boolean(errors.email)}
                     {...register("email", {
-                        required: "Email is required.",
-                        parttern:email_regex
+                        required: true,
+                        pattern:email_regex
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
