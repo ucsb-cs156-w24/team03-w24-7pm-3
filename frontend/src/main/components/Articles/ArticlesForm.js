@@ -23,6 +23,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
     // Stryker disable next-line all
     const email_regex = /\.*@\.*/i;
 
+
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
 
@@ -100,6 +101,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     type="text"
                     isInvalid={Boolean(errors.email)}
                     {...register("email", {
+
                         required: true,
                         pattern:email_regex
                     })}
