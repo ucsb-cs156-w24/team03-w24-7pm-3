@@ -43,7 +43,9 @@ describe("articlesUtils", () => {
 
             // assert
             expect(result).toEqual({
-                url: "/api/ucsbdates",
+
+                url: "/api/articles",
+
                 method: "DELETE",
                 params: { id: 17 }
             });

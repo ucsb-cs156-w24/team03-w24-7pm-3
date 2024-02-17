@@ -100,6 +100,20 @@ describe("ArticlesForm tests", () => {
         await waitFor(() => {
             expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
         });
+
+
+
+        const emailInput = screen.getByTestId(`${testId}-email`);
+        fireEvent.change(emailInput, { target: { value: "email.com" } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => {
+            expect(screen.getByText(/@ is required in an email/)).toBeInTheDocument();
+        });
+        expect(screen.queryByText(/Email is required/)).not.toBeInTheDocument();
+
+
+
     });
 
 
@@ -125,7 +139,9 @@ describe("ArticlesForm tests", () => {
         fireEvent.change(titleField, { target: { value: 'title' } });
         fireEvent.change(urlField, { target: { value: 'http://articles.com' } });
         fireEvent.change(explanationField, { target: { value: 'explanation1' } });
-        fireEvent.change(emailField, { target: { value: 'email1' } });
+
+        fireEvent.change(emailField, { target: { value: 'email1@gmail.com' } });
+
         fireEvent.change(dateAddedField, { target: { value: '2022-10-02T12:00' } });
         fireEvent.click(submitButton);
 
