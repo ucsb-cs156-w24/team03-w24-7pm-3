@@ -7,7 +7,7 @@ const articlesFixtures = {
         "url": "http://article1.com",
         "explanation":"explanation1" ,
         "email":"email1@gmail.com",
-        "localDateTime": "2022-01-02T12:00:00"
+        "dateAdded": "2022-01-02T12:00:00"
 
       }
     ],
@@ -20,7 +20,7 @@ const articlesFixtures = {
             "url": "http://article2.com",
             "explanation":"explanation2" ,
             "email":"email2@gmail.com",
-            "localDateTime": "2022-02-02T12:00:00"
+            "dateAdded": "2022-02-02T12:00:00"
         },
 
         {
@@ -29,7 +29,7 @@ const articlesFixtures = {
             "url": "http://article3.com",
             "explanation":"explanation3" ,
             "email":"email3@gmail.com",
-            "localDateTime": "2022-03-02T12:00:00"
+            "dateAdded": "2022-03-02T12:00:00"
         },
 
         {
@@ -38,7 +38,7 @@ const articlesFixtures = {
             "url": "http://article4.com",
             "explanation":"explanation4" ,
             "email":"email4@gmail.com",
-            "localDateTime": "2022-04-02T12:00:00"
+            "dateAdded": "2022-04-02T12:00:00"
         },
         
     ]
