@@ -98,28 +98,28 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         expect(screen.getByText(/Station is required/)).toBeInTheDocument();
 
         const diningCommonsCodeInput = screen.getByTestId(`${testId}-diningCommonsCode`);
-        fireEvent.change(diningCommonsCodeInput, { target: { value: "a".repeat(31) } });
+        fireEvent.change(diningCommonsCodeInput, { target: { value: "a".repeat(256) } });
         fireEvent.click(submitButton);
-        await screen.findByText(/Max length 30 characters/);
-        expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+        await screen.findByText(/Max length 255 characters/);
+        expect(screen.getByText(/Max length 255 characters/)).toBeInTheDocument();
 
 
         const nameInput = screen.getByTestId(`${testId}-name`);
-        fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });
+        fireEvent.change(nameInput, { target: { value: "a".repeat(256) } });
         fireEvent.change(diningCommonsCodeInput, { target: { value: "" } });
         fireEvent.click(submitButton);
 
-        await screen.findByText(/Max length 30 characters/);
-        expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+        await screen.findByText(/Max length 255 characters/);
+        expect(screen.getByText(/Max length 255 characters/)).toBeInTheDocument();
 
 
         const stationInput = screen.getByTestId(`${testId}-station`);
-        fireEvent.change(stationInput, { target: { value: "a".repeat(31) } });
+        fireEvent.change(stationInput, { target: { value: "a".repeat(256) } });
         fireEvent.change(nameInput, { target: { value: "" } });
         fireEvent.click(submitButton);
 
-        await screen.findByText(/Max length 30 characters/);
-        expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+        await screen.findByText(/Max length 255 characters/);
+        expect(screen.getByText(/Max length 255 characters/)).toBeInTheDocument();
 
     });
 
