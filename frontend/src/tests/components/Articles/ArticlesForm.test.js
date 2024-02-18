@@ -137,7 +137,9 @@ describe("ArticlesForm tests", () => {
         fireEvent.change(titleField, { target: { value: 'title' } });
         fireEvent.change(urlField, { target: { value: 'http://articles.com' } });
         fireEvent.change(explanationField, { target: { value: 'explanation1' } });
+
         fireEvent.change(emailField, { target: { value: 'email1@gmail.com' } });
+
         fireEvent.change(dateAddedField, { target: { value: '2022-10-02T12:00' } });
         fireEvent.click(submitButton);
 

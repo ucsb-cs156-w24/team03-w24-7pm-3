@@ -105,7 +105,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.email?.type === "required" && 'Email is required'}
+                    {errors.email?.type === "required" && 'Email is required.'}
                     {// Stryker disable next-line all
                     errors.email?.type === "pattern" && '@ is required in an email'}
                 </Form.Control.Feedback>
