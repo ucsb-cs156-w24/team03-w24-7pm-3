@@ -102,7 +102,6 @@ describe("ArticlesForm tests", () => {
         });
 
 
-
         const emailInput = screen.getByTestId(`${testId}-email`);
         fireEvent.change(emailInput, { target: { value: "email.com" } });
         fireEvent.click(submitButton);
@@ -111,7 +110,6 @@ describe("ArticlesForm tests", () => {
             expect(screen.getByText(/@ is required in an email/)).toBeInTheDocument();
         });
         expect(screen.queryByText(/Email is required/)).not.toBeInTheDocument();
-
 
 
     });
