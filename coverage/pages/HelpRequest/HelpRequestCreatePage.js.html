@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/Articles/ArticlesCreatePage.js</title>
+    <title>Code coverage report for pages/HelpRequest/HelpRequestCreatePage.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/Articles</a> ArticlesCreatePage.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/HelpRequest</a> HelpRequestCreatePage.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -113,7 +113,8 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,6 +123,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,34 +166,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import ArticlesForm from "main/components/Articles/ArticlesForm";
+import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
 import { Navigate } from 'react-router-dom'
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
+export default function HelpRequestCreatePage({storybook=false}) {
 &nbsp;
-export default function ArticlesCreatePage({storybook=false}) {
-&nbsp;
-  const objectToAxiosParams = (articles) =&gt; ({
-    url: "/api/articles/post",
+  // Stryker disable all : placeholder for future implementation
+  const objectToAxiosParams = (helpRequest) =&gt; ({
+    url: "/api/helprequest/post",
     method: "POST",
     params: {
-     title: articles.title,
-     url: articles.url,
-     explanation: articles.explanation,
-     email: articles.email,
-     dateAdded: articles.dateAdded
+     requesterEmail: helpRequest.requesterEmail,
+     teamId: helpRequest.teamId,
+     tableOrBreakoutRoom: helpRequest.tableOrBreakoutRoom,
+     requestTime: helpRequest.requestTime,
+     explanation: helpRequest.explanation,
+     solved: helpRequest.solved
     }
   });
 &nbsp;
-  const onSuccess = (articles) =&gt; {
-    toast(`New articles Created - id: ${articles.id} title: ${articles.title}`);
+  const onSuccess = (helpRequest) =&gt; {
+    toast(`New helpRequest Created - id: ${helpRequest.id} requesterEmail: ${helpRequest.requesterEmail}`);
   }
 &nbsp;
   const mutation = useBackendMutation(
     objectToAxiosParams,
      { onSuccess }, 
      // Stryker disable next-line all : hard to set up test for caching
-     ["/api/articles/all"] // mutation makes this key stale so that pages relying on it reload
+     ["/api/helprequest/all"] // mutation makes this key stale so that pages relying on it reload
      );
 &nbsp;
   const { isSuccess } = mutation
@@ -201,14 +204,14 @@ export default function ArticlesCreatePage({storybook=false}) {
   }
 &nbsp;
   if (isSuccess &amp;&amp; !storybook) {
-    return &lt;Navigate to="/articles" /&gt;
+    return &lt;Navigate to="/helprequest" /&gt;
   }
 &nbsp;
   return (
     &lt;BasicLayout&gt;
       &lt;div className="pt-2"&gt;
-        &lt;h1&gt;Create New Article&lt;/h1&gt;
-        &lt;ArticlesForm submitAction={onSubmit} /&gt;
+        &lt;h1&gt;Create New Help Request&lt;/h1&gt;
+        &lt;HelpRequestForm submitAction={onSubmit} /&gt;
       &lt;/div&gt;
     &lt;/BasicLayout&gt;
   )
