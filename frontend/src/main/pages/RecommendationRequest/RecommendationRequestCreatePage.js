@@ -6,19 +6,18 @@ import { toast } from "react-toastify";
 
 export default function RecommendationRequestCreatePage({storybook=false}) {
 
- const objectToAxiosParams = (recommendationRequest) => ({
-   url: "/api/recommendationrequest/post",
-   method: "POST",
-   params: {
-    requesterEmail: recommendationRequest.requesterEmail,
-    professorEmail: recommendationRequest.professorEmail,
-    explanation: recommendationRequest.explanation,
-    dateRequested: recommendationRequest.dateRequested,
-    dateNeeded: recommendationRequest.dateNeeded,
-    done: recommendationRequest.done
-
-   }
- });
+  const objectToAxiosParams = (recommendationRequest) => ({
+    url: "/api/recommendationrequests/post",
+    method: "POST",
+    params: {
+      requesterEmail: recommendationRequest.requesterEmail,
+      professorEmail: recommendationRequest.professorEmail,
+      explanation: recommendationRequest.explanation,
+      dateRequested: recommendationRequest.dateRequested,
+      dateNeeded: recommendationRequest.dateNeeded,
+      done: recommendationRequest.done
+    }
+  });
 
  const onSuccess = (recommendationRequest) => {
    toast(`New RecommendationRequest Created - id: ${recommendationRequest.id}`);
@@ -28,7 +27,7 @@ export default function RecommendationRequestCreatePage({storybook=false}) {
    objectToAxiosParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    ["/api/recommendationrequest/all"] // mutation makes this key stale so that pages relying on it reload
+    ["/api/recommendationrequests/all"] // mutation makes this key stale so that pages relying on it reload
     );
 
  const { isSuccess } = mutation
@@ -38,7 +37,7 @@ export default function RecommendationRequestCreatePage({storybook=false}) {
  }
 
  if (isSuccess && !storybook) {
-   return <Navigate to="/api/recommendationrequest" />
+   return <Navigate to="/recommendationrequest" />
  }
 
  return (

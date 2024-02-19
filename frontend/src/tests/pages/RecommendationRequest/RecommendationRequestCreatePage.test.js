@@ -52,7 +52,7 @@ describe("RecommendationRequestCreatePage tests", () => {
        );
    });
 
-   test("on submit, makes request to backend, and redirects to /recommendationrequest", async () => {
+   test("on submit, makes request to backend, and redirects to /recommendationrequests", async () => {
 
        const queryClient = new QueryClient();
        const recommendationRequest = {
@@ -65,7 +65,7 @@ describe("RecommendationRequestCreatePage tests", () => {
            done: false
        };
 
-       axiosMock.onPost("/api/recommendationrequest/post").reply(202, recommendationRequest);
+       axiosMock.onPost("/api/recommendationrequests/post").reply(202, recommendationRequest);
 
        render(
            <QueryClientProvider client={queryClient}>

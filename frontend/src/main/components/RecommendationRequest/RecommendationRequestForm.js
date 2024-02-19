@@ -85,7 +85,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    data-testid={testIdPrefix + "-explanation"}
                    id="explanation"
                    type="text"
-                   isInvalid={Boolean(errors.explanantion)}
+                   isInvalid={Boolean(errors.explanation)}
                    {...register("explanation", {
                        required: "Explanation is required."
                    })}
