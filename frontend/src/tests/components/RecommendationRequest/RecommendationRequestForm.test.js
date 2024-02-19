@@ -90,6 +90,33 @@ describe("RecommendationRequestForm tests", () => {
         expect(screen.getByText(/DateNeeded is required./)).toBeInTheDocument();
     });
 
+    test("Correct Error messsages on bad input", async () => {
+
+        render(
+            <Router  >
+                <RecommendationRequestForm />
+            </Router>
+        );
+        await screen.findByTestId("RecommendationRequestForm-requesterEmail");
+        const requesterEmailField = screen.getByTestId("RecommendationRequestForm-requesterEmail");
+        const professorEmailField = screen.getByTestId("RecommendationRequestForm-professorEmail");
+        const explanationField = screen.getByTestId("RecommendationRequestForm-explanation");
+        const dateRequestedField = screen.getByTestId("RecommendationRequestForm-dateRequested");
+        const dateNeededField = screen.getByTestId("RecommendationRequestForm-dateNeeded");
+        const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
+
+        fireEvent.change(requesterEmailField, { target: { value: 'bad-input' } });
+        fireEvent.change(professorEmailField, { target: { value: 'bad-input' } });
+        fireEvent.change(explanationField, { target: { value: 'BS/MS program' } });
+        fireEvent.change(dateRequestedField, { target: { value: '2022-04-20T12:00:00' } });
+        fireEvent.change(dateNeededField, { target: { value: '2022-05-01T12:00:00' } });
+        fireEvent.click(submitButton);
+
+        await screen.findByText(/Requester email must be a valid email./);
+        await screen.findByText(/Professor email must be a valid email./);
+
+    });
+
 
     test("No Error messsages on good input", async () => {
 
@@ -121,6 +148,8 @@ describe("RecommendationRequestForm tests", () => {
 
         expect(screen.queryByText(/dateRequested must be in ISO format/)).not.toBeInTheDocument();
         expect(screen.queryByText(/dateNeeded must be in ISO format/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Requester email must be a valid email./)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Professor email must be a valid email./)).not.toBeInTheDocument();
 
     });
 

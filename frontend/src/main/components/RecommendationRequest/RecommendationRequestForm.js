@@ -26,6 +26,9 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
 
    const testIdPrefix = "RecommendationRequestForm";
 
+   // Stryker disable next-line Regex
+   const email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
    return (
        <Form onSubmit={handleSubmit(submitAction)}>
 
@@ -53,11 +56,12 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    type="text"
                    isInvalid={Boolean(errors.requesterEmail)}
                    {...register("requesterEmail", {
-                       required: "RequesterEmail is required."
+                       required: true, pattern: email_regex
                    })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.requesterEmail?.message}
+                    {errors.requesterEmail && 'RequesterEmail is required. '}
+                    {errors.requesterEmail?.type === 'pattern' && 'Requester email must be a valid email.'}
                </Form.Control.Feedback>
            </Form.Group>
 
@@ -70,11 +74,12 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    type="text"
                    isInvalid={Boolean(errors.professorEmail)}
                    {...register("professorEmail", {
-                       required: "ProfessorEmail is required."
+                       required: true, pattern: email_regex
                    })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.professorEmail?.message}
+                    {errors.professorEmail && 'ProfessorEmail is required. '}
+                    {errors.professorEmail?.type === 'pattern' && 'Professor email must be a valid email.'}
                </Form.Control.Feedback>
            </Form.Group>
 
@@ -85,7 +90,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    data-testid={testIdPrefix + "-explanation"}
                    id="explanation"
                    type="text"
-                   isInvalid={Boolean(errors.explanantion)}
+                   isInvalid={Boolean(errors.explanation)}
                    {...register("explanation", {
                        required: "Explanation is required."
                    })}

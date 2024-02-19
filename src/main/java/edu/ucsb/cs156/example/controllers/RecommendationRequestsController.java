@@ -51,7 +51,7 @@ public class RecommendationRequestsController extends ApiController {
 public RecommendationRequests postRequest(
         @Parameter(description="requesterEmail") @RequestParam String requesterEmail,
         @Parameter(description="professorEmail") @RequestParam String professorEmail,
-        @Parameter(description="Explanation") @RequestParam String Explanation,
+        @Parameter(description="explanation") @RequestParam String explanation,
         @Parameter(description="dateRequested") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
         @Parameter(description="dateNeeded") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded,
         @Parameter(description="done") @RequestParam boolean done) {
@@ -59,7 +59,7 @@ public RecommendationRequests postRequest(
     RecommendationRequests request = new RecommendationRequests();
     request.setRequesterEmail(requesterEmail);
     request.setProfessorEmail(professorEmail);
-    request.setExplanation(Explanation);
+    request.setExplanation(explanation);
     request.setDateRequested(dateRequested);
     request.setDateNeeded(dateNeeded);
     request.setDone(done);
