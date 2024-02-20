@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-w24/team03-w24-7pm-3
 owner: ucsb-cs156-w24
 repo_name: team03-w24-7pm-3
-pull_requests: []
+pull_requests: [{"author":{"id":"MDQ6VXNlcjY0MzI4MjM0","is_bot":false,"login":"Rytuose","name":""},"headRefName":"tableEdit","number":98,"title":"Booleans now print on table","url":"https://github.com/ucsb-cs156-w24/team03-w24-7pm-3/pull/98"}]
