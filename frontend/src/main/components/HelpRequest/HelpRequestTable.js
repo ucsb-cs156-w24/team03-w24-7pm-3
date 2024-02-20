@@ -55,7 +55,7 @@ export default function HelpRequestTable({
         },
         {
             Header: 'solved',
-            accessor: 'solved',
+            accessor: d=>d.solved.toString(),
         }
     ];
 
