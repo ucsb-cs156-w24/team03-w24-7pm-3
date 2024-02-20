@@ -6,15 +6,15 @@ import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/restaurantU
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function UCSBDiningCommonsMenuItemTable({
-    ucsbDiningCommonsMenuItems,
+export default function UCSBOrganizationTable({
+    ucsbOrganization,
     currentUser,
-    testIdPrefix = "UCSBDiningCommonsMenuItemTable" }) {
+    testIdPrefix = "UCSBOrganizationTable" }) { 
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/ucsbdiningcommonsmenuitem/edit/${cell.row.values.id}`)
+        navigate(`/ucsborganizations/edit/${cell.row.values.id}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -22,7 +22,7 @@ export default function UCSBDiningCommonsMenuItemTable({
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/ucsbdiningcommonsmenuitem/all"]
+        ["/api/ucsborganizations/all"]
     );
     // Stryker restore all 
 
@@ -31,20 +31,20 @@ export default function UCSBDiningCommonsMenuItemTable({
 
     const columns = [
         {
-            Header: 'id',
-            accessor: 'id', // accessor is the "key" in the data
+            Header: 'OrgCode',
+            accessor: 'orgCode', // accessor is the "key" in the data
         },
         { 
-            Header: 'Dining Commons Code',
-            accessor: 'diningCommonsCode',
+            Header: 'Organization Acronym',
+            accessor: 'orgTranslationShort',
         },
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'Organization name',
+            accessor: 'orgTranslation',
         },
         {
-            Header: 'Station',
-            accessor: 'station',
+            Header: 'Organization status',
+            accessor: 'inactive',
         } 
     ];
 
@@ -54,9 +54,8 @@ export default function UCSBDiningCommonsMenuItemTable({
     } 
 
     return <OurTable
-        data={ucsbDiningCommonsMenuItems}
+        data={ucsbOrganization}
         columns={columns}
         testid={testIdPrefix}
     />;
 };
-
