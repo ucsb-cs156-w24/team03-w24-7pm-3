@@ -141,13 +141,13 @@ describe("UCSBOrganizationEditPage tests", () => {
                 </QueryClientProvider>
             );
 
-            await screen.findByTestId("UCSBOrganization-orgCode");
-
+            //const codeField = screen.getByTestId("USCBOrganization-orgCode");
             const idField = screen.getByTestId("UCSBOrganizationForm-orgCode");
             const nameField = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
             const descriptionField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
             const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
 
+            
             expect(idField).toHaveValue("17");
             expect(nameField).toHaveValue("Freebirds");
             expect(descriptionField).toHaveValue("Burritos");

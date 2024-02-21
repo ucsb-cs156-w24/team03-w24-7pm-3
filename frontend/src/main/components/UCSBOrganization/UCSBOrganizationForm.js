@@ -22,7 +22,6 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
 
-           
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
                 <Form.Control
@@ -30,20 +29,14 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                     id="orgCode"
                     type="text"
                     isInvalid={Boolean(errors.orgCode)}
-                    {...register("orgCode", {
+                    {...register("orgCode",{
                         required: "Organization code is required.",
-                        maxLength : {
-                            value: 30,
-                            message: "Max length 30 characters"
-                        }
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
                     {errors.orgCode?.message}
                 </Form.Control.Feedback>
-    
             </Form.Group>
-           
 
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="orgTranslationShort">Organization acronym</Form.Label>
