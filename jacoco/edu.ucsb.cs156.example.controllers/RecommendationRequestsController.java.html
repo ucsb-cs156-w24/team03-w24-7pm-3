@@ -51,7 +51,7 @@ import java.time.LocalDateTime;
 public RecommendationRequests postRequest(
         @Parameter(description=&quot;requesterEmail&quot;) @RequestParam String requesterEmail,
         @Parameter(description=&quot;professorEmail&quot;) @RequestParam String professorEmail,
-        @Parameter(description=&quot;Explanation&quot;) @RequestParam String Explanation,
+        @Parameter(description=&quot;explanation&quot;) @RequestParam String explanation,
         @Parameter(description=&quot;dateRequested&quot;) @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
         @Parameter(description=&quot;dateNeeded&quot;) @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded,
         @Parameter(description=&quot;done&quot;) @RequestParam boolean done) {
@@ -59,7 +59,7 @@ public RecommendationRequests postRequest(
 <span class="fc" id="L59">    RecommendationRequests request = new RecommendationRequests();</span>
 <span class="fc" id="L60">    request.setRequesterEmail(requesterEmail);</span>
 <span class="fc" id="L61">    request.setProfessorEmail(professorEmail);</span>
-<span class="fc" id="L62">    request.setExplanation(Explanation);</span>
+<span class="fc" id="L62">    request.setExplanation(explanation);</span>
 <span class="fc" id="L63">    request.setDateRequested(dateRequested);</span>
 <span class="fc" id="L64">    request.setDateNeeded(dateNeeded);</span>
 <span class="fc" id="L65">    request.setDone(done);</span>
