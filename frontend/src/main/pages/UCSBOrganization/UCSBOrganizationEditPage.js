@@ -18,7 +18,7 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
                 method: "GET",
                 url: `/api/ucsborganizations`,
                 params: {
-                    id
+                    orgCode: id
                 }
             }
         );
@@ -36,6 +36,7 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
             inactive: ucsborganizations.inactive
         }
     });
+
 
     const onSuccess = (ucsborganizations) => {
         toast(`Organization Updated - orgCode: ${ucsborganizations.orgCode}`);
