@@ -120,7 +120,7 @@ describe("UCSBOrganizationForm tests", () => {
         await screen.findByText(/Max length 30 characters/);
         //expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
 
-        const errorMessages = screen.getAllByText(/Max length 30 characters/);
+        //const errorMessages = screen.getAllByText(/Max length 30 characters/);
 
     });
 
