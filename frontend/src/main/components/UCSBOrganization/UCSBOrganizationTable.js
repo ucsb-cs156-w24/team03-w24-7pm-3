@@ -2,7 +2,7 @@ import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/restaurantUtils"
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBOrganizationUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
@@ -11,7 +11,7 @@ export default function UCSBOrganizationTable({ ucsbOrganization, currentUser })
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/ucsborganizations/edit/${cell.row.values.id}`)
+        navigate(`/ucsborganizations/edit/${cell.row.values.orgCode}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -36,12 +36,12 @@ export default function UCSBOrganizationTable({ ucsbOrganization, currentUser })
             accessor: 'orgTranslationShort',
         },
         {
-            Header: 'Organization name',
+            Header: 'Organization Name',
             accessor: 'orgTranslation',
         },
         {
-            Header: 'Organization status',
-            accessor: 'inactive',
+            Header: 'Organization Status',
+            accessor: d=>d.inactive.toString(),
         } 
     ];
 

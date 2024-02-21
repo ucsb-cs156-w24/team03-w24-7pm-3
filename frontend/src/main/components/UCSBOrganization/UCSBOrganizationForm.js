@@ -22,20 +22,21 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
 
-            {initialContents && (
-                <Form.Group className="mb-3" >
-                    <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
-                    <Form.Control
-                        data-testid={testIdPrefix + "-orgCode"}
-                        id="orgCode"
-                        type="text"
-                        isInvalid={Boolean(errors.orgCode)}
-                        {...register("orgCode")}
-                        value={initialContents.id}
-                        disabled
-                    />
-                </Form.Group>
-            )}
+            <Form.Group className="mb-3" >
+                <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
+                <Form.Control
+                    data-testid={testIdPrefix + "-orgCode"}
+                    id="orgCode"
+                    type="text"
+                    isInvalid={Boolean(errors.orgCode)}
+                    {...register("orgCode",{
+                        required: "Organization code is required.",
+                    })}
+                />
+                <Form.Control.Feedback type="invalid">
+                    {errors.orgCode?.message}
+                </Form.Control.Feedback>
+            </Form.Group>
 
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="orgTranslationShort">Organization acronym</Form.Label>
@@ -83,7 +84,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                     data-testid={testIdPrefix + "-inactive"}
                     id="inactive"
                     type="checkbox"
-                    {...register("done")}
+                    {...register("inactive")}
                 />
                 <Form.Control.Feedback type="invalid">
                     {errors.inactive?.message}
