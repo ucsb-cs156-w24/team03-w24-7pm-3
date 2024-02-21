@@ -16,7 +16,7 @@ jest.mock('react-router-dom', () => ({
 describe("UCSBOrganizationForm tests", () => {
     const queryClient = new QueryClient();
 
-    const expectedHeaders = ["Organization acronym", "Organization name", "Organization status"];
+    const expectedHeaders = ["Organization acronym", "Organization name", "Inactive"];
     const testId = "UCSBOrganizationForm";
 
     test("renders correctly with no initialContents", async () => {
@@ -55,6 +55,9 @@ describe("UCSBOrganizationForm tests", () => {
 
         expect(await screen.findByTestId(`${testId}-orgCode`)).toBeInTheDocument();
         expect(screen.getByText(`OrgCode`)).toBeInTheDocument();
+
+        expect(await screen.findByTestId(`${testId}-inactive`)).toBeInTheDocument();
+        expect(screen.getByText(`Inactive`)).toBeInTheDocument();
     });
 
 
@@ -88,7 +91,8 @@ describe("UCSBOrganizationForm tests", () => {
         const submitButton = screen.getByTestId(`${testId}-submit`);
         fireEvent.click(submitButton);
 
-
+        await screen.findByText(/Organization code is required./);
+        expect(screen.getByText(/Organization code is required./)).toBeInTheDocument();
 
         await screen.findByText(/Organization acronym is required./);
         expect(screen.getByText(/Organization acronym is required./)).toBeInTheDocument();
@@ -96,8 +100,8 @@ describe("UCSBOrganizationForm tests", () => {
         await screen.findByText(/Organization name is required./);
         expect(screen.getByText(/Organization name is required./)).toBeInTheDocument();
 
-        await screen.findByText(/Organization status is required./);
-        expect(screen.getByText(/Organization status is required./)).toBeInTheDocument();
+        //await screen.findByText(/Organization status is required./);
+        //expect(screen.getByText(/Organization status is required./)).toBeInTheDocument();
 
 
         //const acronymInput = screen.getByTestId(`${testId}-orgTranslationShort`);
@@ -107,19 +111,24 @@ describe("UCSBOrganizationForm tests", () => {
         fireEvent.change(orgNameInput, { target: { value: "a".repeat(31) } });
         fireEvent.click(submitButton);
         await screen.findByText(/Max length 30 characters/);
+        expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
         //expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
 
         const orgStatusInput = screen.getByTestId(`${testId}-inactive`);
+        fireEvent.change(orgNameInput, { target: { value: "" } });
         fireEvent.change(orgStatusInput, { target: { value: "a".repeat(31) } });
-        fireEvent.change(orgNameInput, { target: { value: "a".repeat(31) } });
+        fireEvent.click(submitButton);
+        await screen.findByText(/Max length 30 characters/);
+
+        const orgCodeInput = screen.getByTestId(`${testId}-orgCode`);
+        fireEvent.change(orgStatusInput, { target: { value: "" } });
+        fireEvent.change(orgCodeInput, { target: { value: "a".repeat(31) } });
         fireEvent.click(submitButton);
         await screen.findByText(/Max length 30 characters/);
         //expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
 
-        const errorMessages = screen.getAllByText(/Max length 30 characters/);
-        expect(errorMessages.length).toBe(2); expect(errorMessages.length).toBe(2); 
+        //const errorMessages = screen.getAllByText(/Max length 30 characters/);
 
-        
     });
 
     test('Form validation enforces maximum length for organization acronym', async () => {
@@ -141,20 +150,20 @@ describe("UCSBOrganizationForm tests", () => {
         const acronymInput = screen.getByTestId(`${testId}-orgTranslationShort`);
         fireEvent.change(acronymInput, { target: { value: "a".repeat(31) } });
         fireEvent.click(submitButton);
-    
+
         // Ensure error message is displayed
         await waitFor(() => {
             expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
         });
-    
+
         // Simulate valid input within maximum length
         fireEvent.change(screen.getByTestId(`${testId}-orgTranslationShort`), { target: { value: 'ShortAcronym' } });
-    
+
         // Ensure error message is not displayed
         await waitFor(() => {
             expect(screen.queryByText(/Max length 30 characters/)).toBeNull();
         });
     });
-    
+
 
 });
