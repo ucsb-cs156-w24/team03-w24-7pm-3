@@ -91,7 +91,8 @@ describe("UCSBOrganizationForm tests", () => {
         const submitButton = screen.getByTestId(`${testId}-submit`);
         fireEvent.click(submitButton);
 
-
+        await screen.findByText(/Organization code is required./);
+        expect(screen.getByText(/Organization code is required./)).toBeInTheDocument();
 
         await screen.findByText(/Organization acronym is required./);
         expect(screen.getByText(/Organization acronym is required./)).toBeInTheDocument();
@@ -114,13 +115,19 @@ describe("UCSBOrganizationForm tests", () => {
         //expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
 
         const orgStatusInput = screen.getByTestId(`${testId}-inactive`);
+        fireEvent.change(orgNameInput, { target: { value: "" } });
         fireEvent.change(orgStatusInput, { target: { value: "a".repeat(31) } });
-        fireEvent.change(orgNameInput, { target: { value: "a".repeat(31) } });
+        fireEvent.click(submitButton);
+        await screen.findByText(/Max length 30 characters/);
+
+        const orgCodeInput = screen.getByTestId(`${testId}-orgCode`);
+        fireEvent.change(orgStatusInput, { target: { value: "" } });
+        fireEvent.change(orgCodeInput, { target: { value: "a".repeat(31) } });
         fireEvent.click(submitButton);
         await screen.findByText(/Max length 30 characters/);
         // expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
 
-        // const errorMessages = screen.getAllByText(/Max length 30 characters/);
+        //const errorMessages = screen.getAllByText(/Max length 30 characters/);
 
     });
 

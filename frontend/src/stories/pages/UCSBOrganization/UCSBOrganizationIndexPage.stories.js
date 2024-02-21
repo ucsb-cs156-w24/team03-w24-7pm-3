@@ -1,7 +1,7 @@
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { ucsborganizationFixtures } from "fixtures/ucsbOrganizationFixturesFixtures";
+import { ucsborganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import { rest } from "msw";
 
 import UCSBOrganizationIndexPage from 'main/pages/UCSBOrganization/UCSBOrganizationIndexPage';
@@ -11,7 +11,7 @@ export default {
     component: UCSBOrganizationIndexPage
 };
 
-const Template = () => <UCSBOrganizationsIndexPage storybook={true}/>;
+const Template = () => <UCSBOrganizationIndexPage storybook={true}/>;
 
 export const Empty = Template.bind({});
 Empty.parameters = {

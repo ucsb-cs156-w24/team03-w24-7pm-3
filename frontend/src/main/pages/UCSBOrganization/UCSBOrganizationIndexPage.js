@@ -8,12 +8,12 @@ import { Button } from 'react-bootstrap';
 
 export default function UCSBOrganizationIndexPage() {
 
-  const currentUser = useCurrentUser();
+    const currentUser = useCurrentUser();
 
-    const { data: ucsborganizations, error: _error, status: _status } =
+    const { data: ucsbOrganization, error: _error, status: _status } =
         useBackend(
             // Stryker disable next-line all : don't test internal caching of React Query
-            ["/api/ucsborganizations/all"],
+            ["api/ucsborganizations/all"],
             { method: "GET", url: "/api/ucsborganizations/all" },
             // Stryker disable next-line all : don't test default value of empty list
             []
@@ -38,7 +38,7 @@ export default function UCSBOrganizationIndexPage() {
             <div className="pt-2">
                 {createButton()}
                 <h1>Organizations</h1>
-                <UCSBOrganizationTable ucsborganizations={ucsborganizations} currentUser={currentUser} />
+                <UCSBOrganizationTable ucsbOrganization={ucsbOrganization} currentUser={currentUser} />
             </div>
         </BasicLayout>
     );
