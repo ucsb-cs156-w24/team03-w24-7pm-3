@@ -16,7 +16,7 @@ jest.mock('react-router-dom', () => ({
 describe("UCSBOrganizationForm tests", () => {
     const queryClient = new QueryClient();
 
-    const expectedHeaders = ["Organization acronym", "Organization name", "Inactive"];
+    const expectedHeaders = ["OrgCode", "Organization acronym", "Organization name", "Inactive"];
     const testId = "UCSBOrganizationForm";
 
     test("renders correctly with no initialContents", async () => {
@@ -98,6 +98,9 @@ describe("UCSBOrganizationForm tests", () => {
 
         await screen.findByText(/Organization name is required./);
         expect(screen.getByText(/Organization name is required./)).toBeInTheDocument();
+
+        await screen.findByText(/Organization code is required./);
+        expect(screen.getByText(/Organization code is required./)).toBeInTheDocument();
 
         //await screen.findByText(/Organization status is required./);
         //expect(screen.getByText(/Organization status is required./)).toBeInTheDocument();
