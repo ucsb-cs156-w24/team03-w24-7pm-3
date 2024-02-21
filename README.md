@@ -11,7 +11,7 @@ Deployments:
 | Table                     | Name         | Github Id |
 |---------------------------|--------------|-----------|
 | UCSBDiningCommonsMenuItem |      Cappillen Lee        |     calee14     |
-| UCSBOrganization          |      Cindy Guzman        |     cdythe      |
+| UCSBOrganization          |      Cindy Guzman        |     cydthe      |
 | RecommendationRequest     |      Shamita Gurusu        |     shamitagurusu      |
 | MenuItemReview            |      Ryan Tai       |      Rytuose     |
 | HelpRequest               |        Joseph Li       |   josephlicodes        |
