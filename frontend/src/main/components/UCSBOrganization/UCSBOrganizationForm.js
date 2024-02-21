@@ -82,15 +82,8 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                 <Form.Check
                     data-testid={testIdPrefix + "-inactive"}
                     id="inactive"
-                    type="boolean"
-                    isInvalid={Boolean(errors.inactive)}
-                    {...register("inactive", {
-                        required: "Organization status is required.",
-                        maxLength : {
-                            value: 30,
-                            message: "Max length 30 characters"
-                        }
-                    })}
+                    type="checkbox"
+                    {...register("done")}
                 />
                 <Form.Control.Feedback type="invalid">
                     {errors.inactive?.message}

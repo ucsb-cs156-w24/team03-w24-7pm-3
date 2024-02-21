@@ -18,27 +18,28 @@ const Template = (args) => {
 export const Empty = Template.bind({});
 
 Empty.args = {
-    organizations: []
+    ucsbOrganization: []
 };
 
 export const ThreeItemsOrdinaryUser = Template.bind({});
 
 ThreeItemsOrdinaryUser.args = {
-    organizations: ucsbOrganizationFixtures.threeOrgs,
+    ucsbOrganization: ucsbOrganizationFixtures.threeOrgs,
     currentUser: currentUserFixtures.userOnly,
 };
 
 export const ThreeItemsAdminUser = Template.bind({});
 ThreeItemsAdminUser.args = {
-    organizations: ucsbOrganizationFixtures.threeOrgs,
+    ucsbOrganization: ucsbOrganizationFixtures.threeOrgs,
     currentUser: currentUserFixtures.adminUser,
 }
 
 ThreeItemsAdminUser.parameters = {
     msw: [
-        rest.delete('/api/organizations', (req, res, ctx) => {
+        rest.delete('/api/ucsborganizations', (req, res, ctx) => {
             window.alert("DELETE: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),
     ]
 };
+ 

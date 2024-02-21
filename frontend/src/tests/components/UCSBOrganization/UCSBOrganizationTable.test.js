@@ -35,6 +35,10 @@ describe("UCSBOrganizationTable tests", () => {
     );
 
     // assert
+
+    console.log('expectedHeaders:', expectedHeaders);
+    console.log('expectedFields:', expectedFields);
+ 
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
@@ -59,6 +63,9 @@ describe("UCSBOrganizationTable tests", () => {
       </QueryClientProvider>
     );
 
+    console.log('expectedHeaders:', expectedHeaders);
+    console.log('expectedFields:', expectedFields);
+ 
     // assert
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
@@ -71,20 +78,20 @@ describe("UCSBOrganizationTable tests", () => {
     });
 
     // assert - check that the expected content is rendered
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("5678");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("HAU");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("Hermanas Unidas");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("true");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent('5678');
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent('HAU');
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent('Hermanas Unidas');
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent('true');
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("91011");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent("JC");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)).toHaveTextContent("Judo Club");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-inactive`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent('91011');
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent('JC');
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)).toHaveTextContent('Judo Club');
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-inactive`)).toHaveTextContent('false');
 
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent("12314");
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgTranslationShort`)).toHaveTextContent("CK");
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgTranslation`)).toHaveTextContent("Cool Kittens");
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-inactive`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent('12314');
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgTranslationShort`)).toHaveTextContent('CK');
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgTranslation`)).toHaveTextContent('Cool Kittens');
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-inactive`)).toHaveTextContent('false');
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
@@ -108,6 +115,11 @@ describe("UCSBOrganizationTable tests", () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
+
+
+    console.log('expectedHeaders:', expectedHeaders);
+    console.log('expectedFields:', expectedFields);
+ 
 
     // assert
     expectedHeaders.forEach((headerText) => {
@@ -212,6 +224,7 @@ describe("UCSBOrganizationTable tests", () => {
 
     const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
+   
 
     // act - click the delete button
     fireEvent.click(deleteButton);

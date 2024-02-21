@@ -13,5 +13,4 @@ export function cellToAxiosParamsDelete(cell) {
             id: cell.row.values.id
         }
     }
-}
-*/
+}*/
