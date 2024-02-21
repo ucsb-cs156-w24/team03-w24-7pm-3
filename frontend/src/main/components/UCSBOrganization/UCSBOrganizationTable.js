@@ -42,7 +42,7 @@ export default function UCSBOrganizationTable({ ucsbOrganization, currentUser })
         },
         {
             Header: 'Organization Status',
-            accessor: 'inactive',
+            accessor: d=>d.inactive.toString(),
         } 
     ];
 
