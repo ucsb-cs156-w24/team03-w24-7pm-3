@@ -6,7 +6,7 @@ import { rest } from "msw";
 import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage"
 
 export default {
-    title: 'pages/UCSBOrganizations/UCSBOrganizationsCreatePage',
+    title: 'pages/UCSBOrganization/UCSBOrganizationsCreatePage',
     component: UCSBOrganizationCreatePage
 };
 

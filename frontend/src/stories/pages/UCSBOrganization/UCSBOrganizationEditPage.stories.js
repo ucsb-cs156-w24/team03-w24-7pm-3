@@ -6,7 +6,7 @@ import { rest } from "msw";
 import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizationEditPage";
 import { ucsborganizationFixtures } from 'fixtures/ucsbOrganizationFixtures';
 export default {
-    title: 'pages/Restaurants/RestaurantEditPage',
+    title: 'pages/UCSBOrganization/UCSBOrganizationEditPage',
     component: UCSBOrganizationEditPage
 };
 
