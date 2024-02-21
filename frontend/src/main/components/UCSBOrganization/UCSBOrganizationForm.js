@@ -84,7 +84,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                     data-testid={testIdPrefix + "-inactive"}
                     id="inactive"
                     type="checkbox"
-                    {...register("done")}
+                    {...register("inactive")}
                 />
                 <Form.Control.Feedback type="invalid">
                     {errors.inactive?.message}

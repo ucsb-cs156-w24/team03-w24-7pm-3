@@ -11,9 +11,9 @@ export default function UCSBOrganizationCreatePage({storybook=false}) {
         url: "/api/ucsborganizations/post",
         method: "POST",
         params: {
-          name: ucsborganizations.orgTranslation,
-          code: ucsborganizations.orgCode,
-          acronym: ucsborganizations.orgTranslationShort,
+          orgTranslation: ucsborganizations.orgTranslation,
+          orgCode: ucsborganizations.orgCode,
+          orgTranslationShort: ucsborganizations.orgTranslationShort,
           inactive: ucsborganizations.inactive
         }
       });
@@ -32,6 +32,7 @@ export default function UCSBOrganizationCreatePage({storybook=false}) {
       const { isSuccess } = mutation
     
       const onSubmit = async (data) => {
+        console.log('asdfasdf', data);
         mutation.mutate(data);
       }
     

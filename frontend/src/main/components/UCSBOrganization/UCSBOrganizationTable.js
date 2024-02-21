@@ -11,7 +11,6 @@ export default function UCSBOrganizationTable({ ucsbOrganization, currentUser })
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        console.log('hhiiiii', cell.row.values.orgCode);
         navigate(`/ucsborganizations/edit/${cell.row.values.orgCode}`)
     }
 
@@ -42,7 +41,7 @@ export default function UCSBOrganizationTable({ ucsbOrganization, currentUser })
         },
         {
             Header: 'Organization Status',
-            accessor: 'inactive',
+            accessor: d => d.inactive.toString(),
         } 
     ];
 
