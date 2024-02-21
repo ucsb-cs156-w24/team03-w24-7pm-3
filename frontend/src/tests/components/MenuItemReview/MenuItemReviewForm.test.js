@@ -100,6 +100,23 @@ describe("MenuItemReviewForm tests", () => {
         await waitFor(() => {
             expect(screen.getByText(/Max rating of 5 stars/)).toBeInTheDocument();
         });
+
+        fireEvent.change(starsField, { target: { value: "-10" } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => {
+            expect(screen.getByText(/Min rating of 1 stars/)).toBeInTheDocument();
+        });
+        expect(screen.queryByText(/Stars are required./)).not.toBeInTheDocument();
+
+        const reviewerEmailField = screen.getByTestId("MenuItemReviewForm-reviewerEmail");
+        fireEvent.change(reviewerEmailField, { target: { value: "cgauchoucsb.edu" } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => {
+            expect(screen.getByText(/@ is required in an email/)).toBeInTheDocument();
+        });
+        expect(screen.queryByText(/Email is required./)).not.toBeInTheDocument();
     });
 
     test("No Error messsages on good input", async () => {
@@ -131,6 +148,8 @@ describe("MenuItemReviewForm tests", () => {
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
         expect(screen.queryByText(/Max rating of 5 stars/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Min rating of 1 stars/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/@ is required in an email/)).not.toBeInTheDocument();
         expect(screen.queryByText(/dateReviewed must be in ISO format/)).not.toBeInTheDocument();
 
     });
