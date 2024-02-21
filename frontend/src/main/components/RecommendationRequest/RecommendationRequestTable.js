@@ -57,7 +57,7 @@ export default function RecommendationRequestTable({
         },
         {
             Header: 'Done',
-            accessor: 'done',
+            accessor: d=>d.done.toString(),
         }
     ];
 
