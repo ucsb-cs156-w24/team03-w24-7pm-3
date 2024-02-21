@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage";
+import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage"; 
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import UCSBOrganizationForm from "main/components/UCSBOrganization/UCSBOrganizationForm";
+import UCSBOrganizationForm from "main/components/UCSBOrganization/UCSBOrganizationForm"; 
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
 
@@ -27,18 +27,18 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
         url: "/api/ucsborganizations",
         method: "PUT",
         params: {
-            id: ucsborganizations.id,
+            orgcode: ucsborganizations.orgCode,
         },
         data: {
             name: ucsborganizations.orgTranslation,
-            orgcode: ucsborganizations.orgCode,
+            code: ucsborganizations.orgCode,
             acronym: ucsborganizations.orgTranslationShort,
             inactive: ucsborganizations.inactive
         }
     });
 
     const onSuccess = (ucsborganizations) => {
-        toast(`Organization Updated - id: ${ucsborganizations.id}`);
+        toast(`Organization Updated - orgCode: ${ucsborganizations.orgCode}`);
     }
 
     const mutation = useBackendMutation(
