@@ -118,9 +118,9 @@ describe("UCSBOrganizationForm tests", () => {
         fireEvent.change(orgNameInput, { target: { value: "a".repeat(31) } });
         fireEvent.click(submitButton);
         await screen.findByText(/Max length 30 characters/);
-        //expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+        // expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
 
-        const errorMessages = screen.getAllByText(/Max length 30 characters/);
+        // const errorMessages = screen.getAllByText(/Max length 30 characters/);
 
     });
 
